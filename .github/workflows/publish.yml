@@ -4,6 +4,8 @@ permissions:
   contents: write
 
 on:
+  schedule:
+  - cron: "0 0 * * *"
   workflow_dispatch:
 
 jobs:
@@ -26,18 +28,36 @@ jobs:
     - name: Setup mise
       uses: jdx/mise-action@v2
 
+    - name: Setup pnpm
+      run: |
+        d=$(echo "$HOME/.local/share/pnpm")
+        mkdir -p "${d}"
+        echo "PNPM_HOME=${d}" >> "$GITHUB_ENV"
+        echo "${d}" >> "$GITHUB_PATH"
+
+    - name: Install VSCode Extension Manager
+      run: pnpm install --global @vscode/vsce@3
+
+    - name: Install Open VSX Extension Manager
+      run: pnpm install --global ovsx@0
+
     - name: Install extension dependencies
-      working-directory: moondusttheme/extension
+      working-directory: moondusttheme
       run: pnpm install --frozen-lockfile
+
+    - name: Pull extension dependencies
+      working-directory: moondusttheme
+      run: pnpm pull
 
     - name: Install website dependencies
       run: pnpm install --frozen-lockfile
 
-    - name: Build extension
-      working-directory: moondusttheme/extension
-      run: pnpm build
+    - name: Pull website dependencies
+      run: pnpm pull
 
     - name: Build website
+      env:
+        GH_TOKEN: ${{github.token}}
       run: pnpm build
 
     - name: Publish website
