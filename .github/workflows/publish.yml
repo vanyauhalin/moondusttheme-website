@@ -45,10 +45,6 @@ jobs:
       working-directory: moondusttheme
       run: pnpm install --frozen-lockfile
 
-    - name: Pull extension dependencies
-      working-directory: moondusttheme
-      run: pnpm pull
-
     - name: Install website dependencies
       run: pnpm install --frozen-lockfile
 
