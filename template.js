@@ -36,7 +36,7 @@ export function list() {
         return page({
           url: c.page.url,
           title: "404 / Moondust Theme",
-          description: "",
+          description: "404 page for Moondust Theme",
           generator: c.eleventy.generator,
           css: c.css,
           js: c.js,
