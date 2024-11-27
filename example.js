@@ -255,6 +255,18 @@ function configs() {
       },
     },
     {
+      id: "py",
+      name: "Python",
+      author: {
+        name: "Ansgar Grunseid",
+        url: "https://github.com/gruns/",
+      },
+      source: {
+        name: "IceCream",
+        file: "https://github.com/gruns/icecream/blob/v2.1.3/icecream/icecream.py/",
+      },
+    },
+    {
       id: "rb",
       name: "Ruby",
       author: {
