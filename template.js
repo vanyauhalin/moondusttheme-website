@@ -90,6 +90,7 @@ function page(p, c) {
       <link rel="preload" href="/Questrial-Regular.woff2" crossorigin="" as="font" type="font/woff2">
       <style>${p.css}</style>
       <script defer type="module">${p.js}</script>
+      <script async src="//gc.zgo.at/count.v5.js" data-goatcounter="https://moondustthedotme.goatcounter.com/count" crossorigin="anonymous" integrity="sha384-atnOLvQb9t+jTSipvd75X2yginT4PjVbqDdlJAmxMm+wYElFmeR6EmLP5bYeoRVQ"></script>
     </head>
     <body class="body">
       ${c.join("")}
